@@ -1,0 +1,107 @@
+Employee Tracker - Challenge 10
+
+Introduction
+
+License: MIT, TypeScript
+
+This application is designed to manage and track employee information efficiently.
+
+Table of Contents
+Required Technologies
+Installation
+Usage
+Code Snippet
+Features
+License
+Technologies Used
+Credits
+
+Required Technologies
+To run this project, you'll need Node.js with npm (Node Package Manager). You can download both from the Node.js website, following their installation guide.
+
+Additionally, PostgreSQL is required to manage the database. You can download PostgreSQL here, and follow the provided instructions to set it up correctly.
+
+Installation
+Download or clone the project files onto your computer and open the project folder in your terminal.
+
+Install dependencies by running:
+
+bash
+Copy code
+npm install
+Configure your PostgreSQL credentials:
+
+Open .env.EXAMPLE, enter your PostgreSQL username and password, then rename it to .env.
+In your terminal, navigate to the db directory:
+bash
+Copy code
+cd db
+Start PostgreSQL with:
+bash
+Copy code
+psql -U {your_username}
+Initialize the database:
+bash
+Copy code
+\i schema.sql;
+Optional: To add sample data, run:
+bash
+Copy code
+\i seeds.sql;
+Return to the project root directory and start the application with:
+
+bash
+Copy code
+npm run start
+Usage
+After starting the app with npm run start, you’ll see a main menu with options such as:
+
+"View all employees"
+"View all departments"
+"View all roles"
+"Add role"
+"Add department"
+"Create new employee"
+Use the arrow keys to navigate and the Enter key to select. For actions that create or update information, you’ll be prompted with questions. Selecting a view option will display the information, and you can return to the main menu with the arrow keys.
+
+Code Snippet
+This snippet connects to the database:
+
+javascript
+Copy code
+const pool = new Pool({
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: 'localhost',
+    database: process.env.DB_NAME,
+    port: 5432,
+});
+
+const connectToDb = async () => {
+    try {
+        await pool.connect();
+        console.log("Connected to the Database");
+    } catch (err) {
+        console.log('ERROR Connecting to database:', err);
+        process.exit(1);
+    }
+};
+Features
+View employee, department, and role data.
+Menu-driven interface for easy navigation.
+Options to add new employees, roles, and departments.
+Ability to update employee roles.
+
+License
+This project is licensed under the MIT license.
+
+Technologies Used
+SQL 
+Node.js 
+Inquirer.js 
+Visual Studio Code
+Stack Overflow
+W3 Schools
+
+Credits
+Parker Speares
